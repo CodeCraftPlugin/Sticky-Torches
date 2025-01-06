@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "sticky_torches",
+  "version": "${version}",
+  "name": "Sticky Torches",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/sticky_torches/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.codecraft.sticky_torches.sticky_torches.client.Sticky_torchesClient"
+    ],
+    "main": [
+      "me.codecraft.sticky_torches.sticky_torches.Sticky_torches"
+    ]
+  },
+  "mixins": [
+    "sticky_torches.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
