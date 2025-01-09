@@ -1,6 +1,6 @@
 package me.codecraft.sticky_torches.sticky_torches;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import me.codecraft.sticky_torches.sticky_torches.entity.StickyTorchEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;

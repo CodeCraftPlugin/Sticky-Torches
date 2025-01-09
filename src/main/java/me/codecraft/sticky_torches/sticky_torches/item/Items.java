@@ -1,5 +1,6 @@
-package me.codecraft.sticky_torches.sticky_torches;
+package me.codecraft.sticky_torches.sticky_torches.item;
 
+import me.codecraft.sticky_torches.sticky_torches.Sticky_torches;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
