@@ -6,7 +6,7 @@
   "description": "",
   "authors": ["CodeCraft07"],
   "contact": {"homepage": "https/github.com/CodeCraftPlugin"},
-  "license": "All-Rights-Reserved",
+  "license": "MIT",
   "icon": "assets/sticky_torches/icon.png",
   "environment": "*",
   "entrypoints": {
