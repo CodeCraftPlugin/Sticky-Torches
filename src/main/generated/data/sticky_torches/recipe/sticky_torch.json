@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:torch",
+    "s": "minecraft:slime_ball"
+  },
+  "pattern": [
+    "#",
+    "s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "sticky_torches:sticky_torch"
+  }
+}

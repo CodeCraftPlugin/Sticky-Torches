@@ -1,6 +1,6 @@
 package me.codecraft.sticky_torches.sticky_torches.client.entity;
 
-import me.codecraft.sticky_torches.sticky_torches.Sticky_torches;
+import me.codecraft.sticky_torches.sticky_torches.StickyTorches;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class StickyTorchModel extends EntityModel<StickyTorchRenderState> {
 
-    public static final EntityModelLayer STICKY_TORCH = new EntityModelLayer(Identifier.of(Sticky_torches.MOD_ID, "stick_torch"), "main");
+    public static final EntityModelLayer STICKY_TORCH = new EntityModelLayer(Identifier.of(StickyTorches.MOD_ID, "stick_torch"), "main");
 
     private final ModelPart sticky_torch;
     public StickyTorchModel(ModelPart root) {

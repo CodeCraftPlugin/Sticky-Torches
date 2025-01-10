@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "sticky_torches:items/sticky_torch"
+    "layer0": "sticky_torches:item/sticky_torch"
   }
 }
