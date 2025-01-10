@@ -7,7 +7,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 
-public class Sticky_torchesClient implements ClientModInitializer {
+public class StickyTorchesClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {

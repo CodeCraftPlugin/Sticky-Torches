@@ -4,17 +4,20 @@
   "version": "${version}",
   "name": "Sticky Torches",
   "description": "",
-  "authors": [],
-  "contact": {},
+  "authors": ["CodeCraft07"],
+  "contact": {"homepage": "https/github.com/CodeCraftPlugin"},
   "license": "All-Rights-Reserved",
   "icon": "assets/sticky_torches/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "me.codecraft.sticky_torches.sticky_torches.client.Sticky_torchesClient"
+      "me.codecraft.sticky_torches.sticky_torches.client.StickyTorchesClient"
     ],
     "main": [
-      "me.codecraft.sticky_torches.sticky_torches.Sticky_torches"
+      "me.codecraft.sticky_torches.sticky_torches.StickyTorches"
+    ],
+    "fabric-datagen": [
+      "me.codecraft.sticky_torches.sticky_torches.data.StickyTorchesDatagen"
     ]
   },
   "mixins": [

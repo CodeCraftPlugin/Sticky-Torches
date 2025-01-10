@@ -21,7 +21,7 @@ public class Sticky extends Item  {
         ItemStack itemStack = user.getStackInHand(hand);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!world.isClient) {
-            StickyTorchEntity stickyTorchEntity = new StickyTorchEntity(user,world,itemStack,null);
+            StickyTorchEntity stickyTorchEntity = new StickyTorchEntity(user,world,itemStack);
             stickyTorchEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, POWER, 0f);
             world.spawnEntity(stickyTorchEntity);
         }

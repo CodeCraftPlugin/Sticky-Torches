@@ -1,7 +1,7 @@
 package me.codecraft.sticky_torches.sticky_torches.client.entity;
 
 import me.codecraft.sticky_torches.sticky_torches.entity.StickyTorchEntity;
-import me.codecraft.sticky_torches.sticky_torches.Sticky_torches;
+import me.codecraft.sticky_torches.sticky_torches.StickyTorches;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 public class StickyTorchRender extends EntityRenderer<StickyTorchEntity,StickyTorchRenderState> {
 
-    private static final Identifier TEXTURE = Identifier.of(Sticky_torches.MOD_ID,"textures/entity/sticky_torch/sticky_torch.png");
+    private static final Identifier TEXTURE = Identifier.of(StickyTorches.MOD_ID,"textures/entity/sticky_torch/sticky_torch.png");
     private final StickyTorchModel model;
     public StickyTorchRender(EntityRendererFactory.Context context) {
         super(context);

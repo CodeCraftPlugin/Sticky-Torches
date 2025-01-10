@@ -1,44 +1,43 @@
 package me.codecraft.sticky_torches.sticky_torches.entity;
 
 import me.codecraft.sticky_torches.sticky_torches.Entities;
-import me.codecraft.sticky_torches.sticky_torches.item.Items;
+import me.codecraft.sticky_torches.sticky_torches.item.StickyTorchesItemsRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.WallTorchBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
-public class StickyTorchEntity extends PersistentProjectileEntity {
+import java.util.Objects;
+
+public class StickyTorchEntity extends ThrownItemEntity {
     public StickyTorchEntity(EntityType<? extends StickyTorchEntity> entityType, World world) {
         super(entityType, world);
     }
 
 
-//    public StickyTorchEntity(double x, double y, double z, World world, ItemStack stack) {
-//        super(Entities.STICKY_TORCH_ENTITY, x, y, z, world, stack);
-//    }
-//    public StickyTorchEntity(World world, LivingEntity owner, ItemStack stack) {
-//        super(Entities.STICKY_TORCH_ENTITY, owner, world, stack);
-//    }
-
-    public StickyTorchEntity(LivingEntity owner, World world, ItemStack stack, @Nullable ItemStack shotFrom) {
-        super(Entities.STICKY_TORCH_ENTITY, owner, world, stack, shotFrom);
+    public StickyTorchEntity(double x, double y, double z, World world, ItemStack stack) {
+        super(Entities.STICKY_TORCH_ENTITY, x, y, z, world, stack);
+    }
+    public StickyTorchEntity(LivingEntity owner, World world,ItemStack stack) {
+        super(Entities.STICKY_TORCH_ENTITY, owner, world, stack);
     }
 
-    public StickyTorchEntity(double x, double y, double z, World world, ItemStack stack, @Nullable ItemStack weapon) {
-        super(Entities.STICKY_TORCH_ENTITY, x, y, z, world, stack, weapon);
-    }
+//    public StickyTorchEntity(LivingEntity owner, World world, ItemStack stack, @Nullable ItemStack shotFrom) {
+//        super(Entities.STICKY_TORCH_ENTITY, owner, world, stack, shotFrom);
+//    }
+//
+//    public StickyTorchEntity(double x, double y, double z, World world, ItemStack stack, @Nullable ItemStack weapon) {
+//        super(Entities.STICKY_TORCH_ENTITY, x, y, z, world, stack, weapon);
+//    }
 
     protected void onBlockCollision(BlockState state) {
         super.onBlockCollision(state);
@@ -47,11 +46,11 @@ public class StickyTorchEntity extends PersistentProjectileEntity {
             BlockPos hitPos = this.getBlockPos();
             Direction hitDirection = this.getHorizontalFacing();// for some unknown reason this minecraft gets east and west wrong but places the torch in the right way
             BlockState torchState;
+            PlayerEntity player = Objects.requireNonNull((PlayerEntity) this.getOwner());
             // Check if the block below the collided block is air
-            if (serverWorld.getBlockState(hitPos.down()).isAir()) {
-                this.kill(serverWorld); // Kill the entity without placing a torch
-                return; // Exit early
-            }if (state.isSideSolidFullSquare(this.getWorld(), hitPos, hitDirection)){
+
+            if (state.isSideSolidFullSquare(this.getWorld(), hitPos, hitDirection)){
+                System.out.println("hit a solid block");
                 if ((hitDirection==Direction.NORTH||hitDirection==Direction.SOUTH)){
                     torchState = Blocks.WALL_TORCH.getDefaultState().with(WallTorchBlock.FACING, hitDirection.getOpposite());
                     serverWorld.setBlockState(hitPos, torchState);
@@ -63,19 +62,20 @@ public class StickyTorchEntity extends PersistentProjectileEntity {
                     this.kill(serverWorld); // Kill the entity without placing a torch
                 }
             }
-             else {
+            else {
                 // Place a regular torch above the hit block
                 BlockPos abovePos = hitPos.up();
                 torchState = Blocks.TORCH.getDefaultState();
-                serverWorld.setBlockState(abovePos, torchState);
+                serverWorld.setBlockState(hitPos, torchState);
+                this.kill(serverWorld);
             }
-
             this.kill(serverWorld); // Remove the projectile
         }
     }
 
+
     @Override
-    protected ItemStack getDefaultItemStack() {
-        return Items.STICKY_TORCH.getDefaultStack();
+    protected Item getDefaultItem() {
+        return StickyTorchesItemsRegistry.STICKY_TORCH;
     }
 }
