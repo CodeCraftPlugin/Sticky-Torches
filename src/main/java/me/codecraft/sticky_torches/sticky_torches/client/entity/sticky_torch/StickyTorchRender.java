@@ -1,4 +1,4 @@
-package me.codecraft.sticky_torches.sticky_torches.client.entity;
+package me.codecraft.sticky_torches.sticky_torches.client.entity.sticky_torch;
 
 import me.codecraft.sticky_torches.sticky_torches.entity.StickyTorchEntity;
 import me.codecraft.sticky_torches.sticky_torches.StickyTorches;

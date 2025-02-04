@@ -21,12 +21,23 @@ public class RecipeGeneration extends FabricRecipeProvider {
     @Override
     protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter recipeExporter) {
 
-        RecipeGenerator recipeGenerator  = new RecipeGenerator(wrapperLookup, recipeExporter) {@Override
+        RecipeGenerator recipeGenerator  = new RecipeGenerator(wrapperLookup, recipeExporter) {
+
+        @Override
         public void generate() {
+
             createShaped(RecipeCategory.TOOLS,StickyTorchesItemsRegistry.STICKY_TORCH).input('#', () -> Items.TORCH).input('s',() ->
                     Items.SLIME_BALL).pattern("#").pattern("s")
-                    .criterion(hasItem(Items.TORCH), this.conditionsFromItem(StickyTorchesItemsRegistry.STICKY_TORCH))
-                    .criterion(hasItem(Items.SLIME_BALL), this.conditionsFromItem(StickyTorchesItemsRegistry.STICKY_TORCH))
+                    .criterion(hasItem(Items.TORCH), conditionsFromItem(Items.TORCH))
+                    .criterion(hasItem(Items.SLIME_BALL), this.conditionsFromItem(Items.SLIME_BALL))
+                    .offerTo(this.exporter);
+
+
+
+            createShaped(RecipeCategory.TOOLS,StickyTorchesItemsRegistry.SOUL_STICKY_TORCH).input('#', () -> Items.SOUL_TORCH).input('s',() ->
+                            Items.SLIME_BALL).pattern("#").pattern("s")
+                    .criterion(hasItem(Items.SOUL_TORCH), this.conditionsFromItem(Items.SOUL_TORCH))
+                    .criterion(hasItem(Items.SLIME_BALL), this.conditionsFromItem(Items.SLIME_BALL))
                     .offerTo(this.exporter);
 
         }};

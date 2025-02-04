@@ -9,9 +9,14 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 public class StickyTorchesItemsRegistry {
-    static Identifier stickyTorch = Identifier.of(StickyTorches.MOD_ID, "sticky_torch");
-    public static final RegistryKey<Item> STICKY_TORCH_KEY=RegistryKey.of(RegistryKeys.ITEM, stickyTorch);
-        public static final Item STICKY_TORCH = registerItem(stickyTorch, new Sticky(new Item.Settings().registryKey(STICKY_TORCH_KEY)));
+    static final Identifier STICKY_TORCH_ID = Identifier.of(StickyTorches.MOD_ID, "sticky_torch");
+    static final Identifier SOUL_STICKY_TORCH_ID = Identifier.of(StickyTorches.MOD_ID, "soul_sticky_torch");
+    public static final RegistryKey<Item> STICKY_TORCH_KEY=RegistryKey.of(RegistryKeys.ITEM, STICKY_TORCH_ID);
+    public static final RegistryKey<Item> SOUL_STICKY_TORCH_KEY=RegistryKey.of(RegistryKeys.ITEM, SOUL_STICKY_TORCH_ID);
+
+
+    public static final Item STICKY_TORCH = registerItem(STICKY_TORCH_ID, new Sticky(new Item.Settings().registryKey(STICKY_TORCH_KEY)));
+    public static final Item SOUL_STICKY_TORCH = registerItem(SOUL_STICKY_TORCH_ID, new Sticky(new Item.Settings().registryKey(SOUL_STICKY_TORCH_KEY)));
 
     public static void init() {
         System.out.println("Loaded All Items");

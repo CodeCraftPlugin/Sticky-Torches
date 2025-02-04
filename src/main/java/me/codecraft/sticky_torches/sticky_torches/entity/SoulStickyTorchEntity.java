@@ -17,25 +17,25 @@ import net.minecraft.world.World;
 
 import java.util.Objects;
 
-public class StickyTorchEntity extends ThrownItemEntity {
-    public StickyTorchEntity(EntityType<? extends StickyTorchEntity> entityType, World world) {
+public class SoulStickyTorchEntity extends ThrownItemEntity {
+    public SoulStickyTorchEntity(EntityType<? extends SoulStickyTorchEntity> entityType, World world) {
         super(entityType, world);
     }
 
 
-    public StickyTorchEntity(double x, double y, double z, World world, ItemStack stack) {
-        super(Entities.STICKY_TORCH_ENTITY, x, y, z, world, stack);
+    public SoulStickyTorchEntity(double x, double y, double z, World world, ItemStack stack) {
+        super(Entities.SOUL_STICKY_TORCH_ENTITY, x, y, z, world, stack);
     }
-    public StickyTorchEntity(LivingEntity owner, World world,ItemStack stack) {
-        super(Entities.STICKY_TORCH_ENTITY, owner, world, stack);
+    public SoulStickyTorchEntity(LivingEntity owner, World world, ItemStack stack) {
+        super(Entities.SOUL_STICKY_TORCH_ENTITY, owner, world, stack);
     }
 
 //    public StickyTorchEntity(LivingEntity owner, World world, ItemStack stack, @Nullable ItemStack shotFrom) {
-//        super(Entities.STICKY_TORCH_ENTITY, owner, world, stack, shotFrom);
+//        super(Entities.SOUL_STICKY_TORCH_ENTITY, owner, world, stack, shotFrom);
 //    }
 //
 //    public StickyTorchEntity(double x, double y, double z, World world, ItemStack stack, @Nullable ItemStack weapon) {
-//        super(Entities.STICKY_TORCH_ENTITY, x, y, z, world, stack, weapon);
+//        super(Entities.SOUL_STICKY_TORCH_ENTITY, x, y, z, world, stack, weapon);
 //    }
 
     protected void onBlockCollision(BlockState state) {
@@ -51,12 +51,12 @@ public class StickyTorchEntity extends ThrownItemEntity {
             if (state.isSideSolidFullSquare(this.getWorld(), hitPos, hitDirection)){
                 System.out.println("hit a solid block");
                 if ((hitDirection==Direction.NORTH||hitDirection==Direction.SOUTH)){
-                    torchState = Blocks.WALL_TORCH.getDefaultState().with(WallTorchBlock.FACING, hitDirection.getOpposite());
+                    torchState = Blocks.SOUL_WALL_TORCH.getDefaultState().with(WallTorchBlock.FACING, hitDirection.getOpposite());
                     serverWorld.setBlockState(hitPos, torchState);
                     this.kill(serverWorld);
                 }// Check if the block hit is a solid full square on the given side
                 if ((hitDirection==Direction.EAST||hitDirection==Direction.WEST)) {
-                    torchState = Blocks.WALL_TORCH.getDefaultState().with(WallTorchBlock.FACING, hitDirection);
+                    torchState = Blocks.SOUL_WALL_TORCH.getDefaultState().with(WallTorchBlock.FACING, hitDirection);
                     serverWorld.setBlockState(hitPos, torchState);
                     this.kill(serverWorld); // Kill the entity without placing a torch
                 }
@@ -64,7 +64,7 @@ public class StickyTorchEntity extends ThrownItemEntity {
             else {
                 // Place a regular torch above the hit block
                 BlockPos abovePos = hitPos.up();
-                torchState = Blocks.TORCH.getDefaultState();
+                torchState = Blocks.SOUL_TORCH.getDefaultState();
                 serverWorld.setBlockState(hitPos, torchState);
                 this.kill(serverWorld);
             }
@@ -75,6 +75,6 @@ public class StickyTorchEntity extends ThrownItemEntity {
 
     @Override
     public Item getDefaultItem() {
-        return StickyTorchesItemsRegistry.STICKY_TORCH;
+        return StickyTorchesItemsRegistry.SOUL_STICKY_TORCH;
     }
 }
